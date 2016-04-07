@@ -1,0 +1,59 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+      http://www.springframework.org/schema/context  
+      http://www.springframework.org/schema/context/spring-context.xsd  
+      http://www.springframework.org/schema/mvc  
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+      default-lazy-init="true">
+	<!-- 启动注解驱动的Spring MVC功能，注册请求url和注解POJO类方法的映射 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" lazy-init="false" />  
+	<mvc:annotation-driven validator="validator"/>
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<!-- 启动包扫描功能，以便注册带有@Controller、@Service、@repository、@Component等注解的类成为spring的bean -->
+	<context:component-scan base-package="com.topeastic.hadoop" />
+	<!-- 对模型视图名称的解析，在请求时模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/view/" p:suffix=".jsp" />
+	<mvc:view-controller path="/WEB-INF/view" view-name="redirect:login" />
+	<!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- 过滤用户是否登录  -->
+		 <mvc:interceptor>
+            <mvc:mapping path="/progress/**"/>
+            <bean class="com.topeastic.hadoop.interceptors.LoginInterceptor" /> 
+        </mvc:interceptor>
+        
+        <!-- 是否有权限 -->
+        <!-- <mvc:interceptor>
+            <mvc:mapping path="/progress/**"/>
+            <bean class="com.topeastic.hadoop.interceptors.AccessInterceptor" /> 
+        </mvc:interceptor> -->
+        
+		<!-- 防止表单重发提交  -->
+		<!-- <mvc:interceptor>
+            <mvc:mapping path="/view/**"/>
+            <bean class="com.topeastic.hadoop.interceptors.TokenInterceptor" /> 
+        </mvc:interceptor> -->
+        
+		<!-- 过滤特殊字符 -->
+		<mvc:interceptor>
+            <mvc:mapping path="/**/**"/>
+            <bean class="com.topeastic.hadoop.interceptors.ContentFilter" /> 
+        </mvc:interceptor>
+        
+        <!-- 国际化  -->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+		
+		
+	<!-- 上传文件拦截，设置最大上传文件大小 10M=10*1024*1024(B)=10485760 bytes -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+	</bean>
+
+</beans> 

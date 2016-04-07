@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/TE-SW301-V100/!svn/ver/97/8%E3%80%81code/hadoopJob/src/com/topeastic/hadoop/entity
+END
+Job.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/TE-SW301-V100/!svn/ver/97/8%E3%80%81code/hadoopJob/src/com/topeastic/hadoop/entity/Job.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/TE-SW301-V100/!svn/ver/97/8%E3%80%81code/hadoopJob/src/com/topeastic/hadoop/entity/User.java
+END
+HadoopJobId.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/TE-SW301-V100/!svn/ver/97/8%E3%80%81code/hadoopJob/src/com/topeastic/hadoop/entity/HadoopJobId.java
+END
+LocalJob.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/TE-SW301-V100/!svn/ver/97/8%E3%80%81code/hadoopJob/src/com/topeastic/hadoop/entity/LocalJob.java
+END

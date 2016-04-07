@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//Config/config.properties=UTF-8
+encoding//WebContent/WEB-INF/view/progress/addJar.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/progress/result.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/progress/showJobInfo.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/welcome.jsp=UTF-8
