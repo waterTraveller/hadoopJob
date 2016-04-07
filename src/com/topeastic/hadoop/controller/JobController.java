@@ -198,6 +198,7 @@ public class JobController {
 
 	// 开始执行Job
 	public void startJob(Job job, String savePath) {
+		
 		// HadoopJob的执行其实就是远程调用linux命令
 		// 格式： hadoop jar xxx.jar
 		String[] params = { "/user/file", "/user/result" };
